@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    include:
+      - core
+logging:
+  level:
+    root: info
+walrus:
+  task-manager:
+    delay:
+      block-confirmation-tracking: 1000
+      deposit-tracking: 1000
+      withdrawal-tracking: 10000

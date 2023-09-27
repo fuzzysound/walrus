@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/walrus
+    username: app
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+walrus:
+  node:
+    endpoint: https://tn.henesis.io/ethereum/goerli?clientId=815fcd01324b8f75818a755a72557750
+  wallet:
+    dir: "/home/eth-wallets/"

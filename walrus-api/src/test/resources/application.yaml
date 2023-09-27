@@ -1,0 +1,12 @@
+spring:
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:walrus
+    driver-class-name: org.h2.Driver
+    username: app
+    password:
+  jpa:
+    show-sql: true

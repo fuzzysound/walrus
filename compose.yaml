@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  api:
+    container_name: "walrus-api"
+    build:
+      context: walrus-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      task_manager:
+        condition: service_healthy
+  task_manager:
+    container_name: "walrus-task-manager"
+    build:
+      context: walrus-task-manager
+      dockerfile: Dockerfile
+    depends_on:
+      task_worker:
+        condition: service_healthy
+  task_worker:
+    container_name: "walrus-task-worker"
+    build:
+      context: walrus-task-worker
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    container_name: "walrus-postgres"
+    image: "postgres:16"
+    restart: always
+    environment:
+      - "POSTGRES_DB=walrus"
+      - "POSTGRES_USER=app"
+      - "POSTGRES_PASSWORD=password"
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "app", "-d", "walrus" ]
+      interval: 5s
+      timeout: 60s
+      retries: 5

@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include:
+      - core
+logging:
+  level:
+    root: info
+walrus:
+  task-worker:
+    delay: 1000

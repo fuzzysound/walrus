@@ -1,0 +1,6 @@
+rootProject.name = 'walrus'
+include 'walrus-core'
+include 'walrus-task-manager'
+include 'walrus-task-worker'
+include 'walrus-api'
+
