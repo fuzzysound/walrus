@@ -6,6 +6,10 @@ plugins {
 
 group = 'com.fuzzysound'
 
+java {
+    sourceCompatibility = '17'
+}
+
 repositories {
     mavenCentral()
 }
